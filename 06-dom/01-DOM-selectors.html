@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learning DOM</title>
+    <style>
+        .bg-black{
+            background-color: rgb(46, 46, 46);
+            color: #fff;
+            
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1 class="heading">Learning DOM</h1>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+
+    <script>
+        const h1Tag = document.querySelector("h1")
+        h1Tag.style.backgroundColor = "lightblue"
+        h1Tag.style.color = "black"
+        h1Tag.style.padding = "10px"
+        h1Tag.style.textAlign = "center"
+
+        /* In Type script 
+
+        const h1Tag = document.querySelector("h1") as HTMLHeadingElement;
+
+        if (h1Tag) {
+            h1Tag.style.backgroundColor = "lightblue";
+            h1Tag.style.color = "black";
+            h1Tag.style.padding = "10px";
+            h1Tag.style.textAlign = "center";
+        }
+
+        */
+    </script>
+</body>
+</html>

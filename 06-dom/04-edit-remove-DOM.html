@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit and remove Dom elements</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>Java Script</li>
+    </ul>
+</body>
+<script>
+    function addItem(lang){
+        const ul = document.querySelector(".language")
+
+        const li = document.createElement("li")
+
+        li.innerText = lang
+
+        ul.appendChild(li)        
+    }
+
+    addItem("Python")
+    addItem("CPP")
+    addItem("C#")
+
+
+    function addOptiLang(lang){     //Optimized way - because in above function we have to traverse all the the li elements to append new li at the end in Simple words because of innerText we have traverse whole tree
+        const li = document.createElement("li")
+
+        li.appendChild(document.createTextNode(lang))       // optimised because we used appendChild not innerText or innerHTML
+
+        document.querySelector(".language").appendChild(li)
+    }
+
+    addOptiLang("Type script")
+
+    /* 
+    function addItem(lang: string): void {
+    const ul = document.querySelector(".language") as HTMLUListElement | null;
+
+    if (ul) {
+        const li: HTMLLIElement = document.createElement("li");
+        li.innerText = lang;
+        ul.appendChild(li);
+    } else {
+        console.error("No element with class 'language' found.");
+    }
+}
+
+addItem("Python");
+addItem("CPP");
+addItem("C#");
+
+function addOptiLang(lang: string): void {
+    const li: HTMLLIElement = document.createElement("li");
+    li.appendChild(document.createTextNode(lang));
+
+    const ul = document.querySelector(".language") as HTMLUListElement | null;
+
+    if (ul) {
+        ul.appendChild(li);
+    } else {
+        console.error("No element with class 'language' found.");
+    }
+}
+
+addOptiLang("TypeScript");
+
+*/
+
+    //Edit
+
+    const secondLang = document.querySelector("li:nth-child(2)")
+
+    const newLang = document.createElement('li')
+    newLang.textContent = "Mojo"
+
+    secondLang.replaceWith(newLang)
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = "<li>Go Lang</li>"
+
+    /*
+
+    const secondLang = document.querySelector("li:nth-child(2)") as HTMLLIElement | null;
+
+if (secondLang) {
+    const newLang: HTMLLIElement = document.createElement('li');
+    newLang.textContent = "Mojo";
+    secondLang.replaceWith(newLang);
+} else {
+    console.error("No second list item found.");
+}
+
+const firstLang = document.querySelector("li:first-child") as HTMLLIElement | null;
+
+if (firstLang) {
+    firstLang.outerHTML = "<li>Go Lang</li>";
+} else {
+    console.error("No first list item found.");
+}
+
+*/
+
+// Remove
+
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.remove()
+
+    /*
+    const lastLang = document.querySelector("li:last-child") as HTMLLIElement | null;
+
+if (lastLang) {
+    lastLang.remove();
+} else {
+    console.error("No last list item found.");
+}
+*/
+</script>
+</html>

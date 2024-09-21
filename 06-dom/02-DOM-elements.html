@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .bg-black{
+            background-color: rgb(46, 46, 46);
+            color: #fff;
+            
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div class="parent">
+        <div class="day">Mon</div>
+        <div class="day">Tue</div>
+        <div class="day">Wed</div>
+        <div class="day">Thu</div>
+    </div>
+</body>
+<script>
+    const parent = document.querySelector(".parent")
+    console.log(parent)
+    console.log(parent.children)    //HTMLCollection(4) [div.day, div.day, div.day, div.day]
+    
+    // for (let index = 0; index < parent.children.length; index++) {
+    //     parent.children[index].innerText = index
+        
+    // }
+
+    console.log(parent.firstElementChild) 
+    console.log(parent.lastElementChild) 
+
+    const child = document.querySelector(".day")
+    console.log(child.parentElement);
+    console.log(child.nextElementSibling);
+
+    console.log("Node: ", parent.childNodes);
+    
+    /*
+
+    const parent = document.querySelector(".parent") as HTMLElement | null;
+console.log(parent);
+
+if (parent) {
+    console.log(parent.children); // HTMLCollection
+
+    for (let index = 0; index < parent.children.length; index++) {
+        (parent.children[index] as HTMLElement).innerText = index.toString();
+    }
+
+    console.log(parent.firstElementChild); // Element | null
+    console.log(parent.lastElementChild); // Element | null
+
+    const child = document.querySelector(".day") as HTMLElement | null;
+    if (child) {
+        console.log(child.parentElement); // HTMLElement | null
+        console.log(child.nextElementSibling); // Element | null
+    }
+    
+    console.log("Node: ", parent.childNodes); // NodeList
+}
+
+*/
+
+
+    
+</script>
+</html>
