@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Async Nature</title>
+</head>
+<body style="background-color: #212121; color: #fff;" >
+    <h1>Yogesh</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    const seyYogesh = () => {
+        console.log("Yogesh")
+    }
+
+    const changeText = ()=>{
+        document.querySelector('h1').innerHTML = "JS Notes"
+    }
+    
+
+    const changeMe = setTimeout(changeText, 2000)
+
+    document.querySelector("#stop").addEventListener('click', () => {
+        clearTimeout(changeMe);     // now when user click to stop btn the changeText - setTimeOut won't work
+        console.log("stop")
+    })
+
+    // Event loop
+    setTimeout(() => {
+        console.log('Name: Yogesh');
+    }, 0);
+
+console.log('This will log first');
+console.log('This will log second');
+
+
+//In JavaScript, the setTimeout function, even when set to 0 milliseconds, doesn't execute immediately. 
+//This is because setTimeout is an asynchronous function. 
+//It doesn't block the code execution but schedules the provided callback function (in this case, logging your name) to be executed after all the currently executing and queued synchronous code has finished running.
+
+/*
+Here's what's happening:
+
+The JavaScript engine runs through your code line by line.
+When it hits setTimeout, it registers the callback (your log statement) to be executed after the synchronous code finishes, even if it's scheduled for 0 milliseconds.
+Then it continues to execute the next lines of synchronous code (like the console.log after the setTimeout).
+After all synchronous code is done, the event loop picks up the scheduled setTimeout callback and executes it.
+
+==> This behavior is due to JavaScript's event loop, which handles asynchronous callbacks after the main thread has completed its execution.
+*/
+
+
+/* in TS
+
+const seyYogesh = (): void => {
+    console.log("Yogesh");
+};
+
+const changeText = (): void => {
+    const heading = document.querySelector('h1');
+    if (heading) {
+        heading.innerHTML = "JS Notes";
+    }
+};
+
+const changeMe = setTimeout(changeText, 2000);
+
+const stopButton = document.querySelector("#stop");
+if (stopButton) {
+    stopButton.addEventListener('click', () => {
+        clearTimeout(changeMe); // Clears the timeout when the button is clicked
+        console.log("stop");
+    });
+}
+
+// Event loop example
+setTimeout((): void => {
+    console.log('Name: Yogesh');
+}, 0);
+
+console.log('This will log first');
+console.log('This will log second');
+
+*/
+</script>
+</html>

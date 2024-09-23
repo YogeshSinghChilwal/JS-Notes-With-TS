@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Project</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <h1>Hello World</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    
+    <script>
+        const showTime = function (){console.log("Time: ", new Date().getTime().toLocaleString())}
+
+        // const interval = setInterval(() => {
+        //     showTime()
+        // }, 1000)
+        let interval;
+        function test(){
+            interval = setInterval(() => {
+                showTime()
+            }, 1000)
+        }
+        test()
+        
+
+        document.querySelector("#stop").addEventListener('click', () => {
+            clearInterval(interval);
+        })
+        document.querySelector("#start").addEventListener('click', () => {
+            //clearInterval(interval);
+            test()
+        })
+    </script>
+</body>
+</html>

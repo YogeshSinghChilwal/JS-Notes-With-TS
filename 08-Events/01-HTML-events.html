@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl"  src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+
+   <script>
+    // document.querySelector("#owl").onclick = function(){     // Main problem with this approach is less features then event listners
+    //     alert("OWL")
+    // }
+
+    // attachEvent()
+    // jQuery - on
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altKey, ctrlKey, shiftKey, keyCode
+
+    document.querySelector("#owl").addEventListener('click', (event) => {
+        //alert("Clicked")
+        console.log("owl clicked");
+        
+    }, true)
+    document.querySelector("#images").addEventListener('click', (event) => {
+        console.log("Clicked inside the ul");
+        //event.stopPropagation()    // now the bubbling won't happen 
+    }, true)
+
+    //Event propagation is the mechanism that controls the order in which events are handled in the DOM (Document Object Model). When an event (like a click) occurs on a specific element, it doesn't just stay on that element—it can propagate through the DOM tree in different phases.
+
+    // false  - (default) Bubbling Phase: Event travels from the target up to the root.
+    // true - Capturing Phase: Event travels from the root down to the target.
+
+    document.querySelector('#google').addEventListener('click',(e) => {
+        //e.preventDefault()        // this will stop the link to work but if the parent propagation is true we have to add preventDefault to the parent or add stopPropagation here or remove stopPropagation from parent
+        
+        e.preventDefault()
+        console.log(e)
+    }, false)
+
+    /* In TS
+
+    const owl = document.querySelector("#owl");
+const images = document.querySelector("#images");
+const google = document.querySelector("#google");
+
+// Check if the element exists before adding event listeners
+if (owl) {
+    // Onclick assignment
+    (owl as HTMLElement).onclick = function () {
+        // Main problem with this approach is fewer features than event listeners
+        alert("OWL");
+    };
+
+    // AddEventListener approach
+    owl.addEventListener('click', (event: MouseEvent) => {
+        console.log("owl clicked");
+    }, true);
+}
+
+if (images) {
+    images.addEventListener('click', (event: MouseEvent) => {
+        console.log("Clicked inside the ul");
+        // event.stopPropagation(); // now the bubbling won't happen
+    }, true);
+}
+
+if (google) {
+    google.addEventListener('click', (e: MouseEvent) => {
+        // e.preventDefault(); // This will stop the link from working, but if parent propagation is true, we have to add preventDefault to the parent or remove stopPropagation from the parent
+
+        e.preventDefault();
+        console.log(e);
+    }, false);
+}
+
+*/
+
+    const photo = document.querySelector("#images")
+    photo.addEventListener('click', (e) => {
+        //photo.remove()        //but the li remains the same
+        
+        let removeIt = e.target.parentNode      // but now if we click on li that dot thing then it's parent is ul so all the images are gone
+
+        if(e.target.tagName === 'IMG'){
+            removeIt.remove() 
+        }
+
+        console.log(removeIt);
+
+        //removeIt.remove()       // new method
+
+        //removeIt.parentNode.removeChild(removeIt)     //Older
+        
+    })
+
+   </script>
+</body>
+</html>
