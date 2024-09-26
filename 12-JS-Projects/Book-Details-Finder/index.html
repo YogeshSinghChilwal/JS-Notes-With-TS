@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details Finder...</title>
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="main">
+        <div class="heading">
+            <h1>Book Details Finder...</h1>
+        </div>
+        <div class="search-form">
+            <form >
+                <input type="text" placeholder="Enter book's title..." id="input-text">
+                <button type="button" class="search-btn"><p class="search-btn-para">Search</p></button>
+            </form>
+        </div>
+        <div class="loader-div">
+            <div id="loading" class="spinner"></div>
+        </div>
+        <div class="content">
+            <div class="content-img">
+                <img class="book-img" alt="Book Cover" >
+            </div>
+            <div class="content-text">
+                <h2 class="title"></h2>
+                <ul>
+                    <li class="li author"></li>
+                    <li class="li author-key"></li>
+                    <li class="li year"></li>
+                    <li class="li cover-id"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+   
+
+    <script src="./script.js"></script>
+</body>
+</html>
