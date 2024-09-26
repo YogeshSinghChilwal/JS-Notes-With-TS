@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #1d1f18;
+      
+}
+
+.main{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #697565;
+    padding: 10px;
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+}
+.container{
+    margin: 5vh 0 0 7vw;
+}
+.head{
+    display: flex;
+}
+
+.notes-img{
+    height: 5rem;
+}
+
+.notes-headding{
+    font-size: 2.6rem;
+}
+
+.create-note-btn{
+    margin-top: 4vh;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #ECDFCC;
+    
+}
+
+.btn-notes-png{
+    margin-right: 5px;
+}
+
+form{
+    position: relative;
+    display: none;
+}
+
+textarea {
+    margin-top: 4vh;
+    /* width: 30vw;
+    height: 30vh; */
+    resize: none;
+    background-color: #ECDFCC;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.add-btn{
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    background-color: #ECDFCC;
+    position: absolute;
+    left: 265px;
+}
+
+.notes-container{
+    margin: 5vh 7vw 0 0;
+    display: none;
+}
+.notes-container ul{
+    background-color: #ECDFCC;
+    padding: 30px;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.notes-container ul li{
+    margin-top: 20px;
+}
