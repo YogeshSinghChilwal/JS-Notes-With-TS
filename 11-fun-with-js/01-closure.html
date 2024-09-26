@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure - Lexial Scoping</title>
+</head>
+<body style="background-color: #313131; color: whitesmoke;">
+    <h2>
+        Lexical Scoping
+    </h2>
+    <p>
+        Lexical scoping (also known as static scoping) means that the accessibility of variables is determined by the position of functions in the source code. <br>
+        Inner functions have access to variables defined in outer functions because of the scope hierarchy.
+
+    </p>
+    <br>
+    <h2>Closure in JavaScript</h2>
+    <p>
+        A closure is a function that remembers the environment (or scope) in which it was created. <br>
+        Even after the outer function has finished execution, the inner function still has access to the variables defined in the outer function due to the closure <br>
+        This happens because JavaScript functions form closures by keeping references to variables from their surrounding scope, even if the surrounding scope is no longer active. <br>
+    </p>
+    <br><br>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+
+<script>
+
+    function init(){
+        let name = "Yogesh"
+        function printMe(){
+            console.log(name);      //Accessible due to lexical scoping
+            
+        }
+        printMe()
+    }
+
+    init()
+
+    function myFun(){
+        const name = "Ravi"
+        function printName (){
+            console.log(name)
+        }
+        return printName
+    }
+
+    const myName = myFun()  // Executes outer and returns the inner function
+    myName()
+
+    /*
+    function init(): void {
+    let name: string = "Yogesh";
+
+    function printMe(): void {
+        console.log(name); // Accessible due to lexical scoping
+    }
+
+    printMe();
+}
+
+init();
+
+function myFun(): () => void {
+    const name: string = "Ravi";
+
+    function printName(): void {
+        console.log(name);
+    }
+
+    return printName;
+}
+
+const myName: () => void = myFun(); // Executes outer and returns the inner function
+myName();
+*/
+
+</script>
+
+<script>
+    // document.getElementById("orange").onclick = function(){
+    //     document.body.style.backgroundColor = `orange`
+    // }
+    // document.getElementById("green").onclick = function(){
+    //     document.body.style.backgroundColor = `green`
+    // }
+
+    function clickHandler(color){
+        // document.body.style.backgroundColor = `${color}`
+
+        return function(){
+            document.body.style.backgroundColor = `${color}`        // when we returning function it is also taking it's lexial scope that is why it has access of color
+        }
+    }
+
+    document.getElementById('orange').onclick = clickHandler("orange")
+    document.getElementById('green').onclick = clickHandler("green")
+
+/*
+
+function clickHandler(color: string): () => void {
+    return function (): void {
+        // Change the background color of the body
+        document.body.style.backgroundColor = color;
+    };
+}
+
+// Get elements by their ID and set the onclick event
+const orangeButton = document.getElementById('orange') as HTMLButtonElement | null;
+const greenButton = document.getElementById('green') as HTMLButtonElement | null;
+
+if (orangeButton) {
+    orangeButton.onclick = clickHandler("orange");
+}
+
+if (greenButton) {
+    greenButton.onclick = clickHandler("green");
+}
+
+*/
+</script>
+</html>
